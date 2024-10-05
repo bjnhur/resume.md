@@ -20,7 +20,7 @@ jobs:
         pip3 install markdown
     
     - name: Make resume
-      run: python3 resume.py --debug
+      run: python3 resume.py --debug --css resume.css
     
     - name: Rename output
       run: mv resume.pdf resume_ubuntu.pdf
