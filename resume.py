@@ -42,17 +42,22 @@ def title(md: str) -> str:
     )
 
 
-def make_html(md: str) -> str:
+def make_html(md: str, css_file: str = None) -> str:
     """
-    Compile md to HTML with necessary preamble and postamble.
+    Compile md to HTML with necessary preamble and postamble, and use a CSS file if provided.
     """
+    css = ""
+    if css_file and os.path.exists(css_file):
+        with open(css_file, "r") as cssfp:
+            css = cssfp.read()
+    
     return "".join(
         (
             "<html lang='ko'>",  # Set language to Korean
             "<head>",
             "<meta charset='UTF-8'>",
             "<style>",
-            "body { font-family: 'Malgun Gothic', 'Nanum Gothic', sans-serif; }",  # Korean font support
+            css,  # Use the provided CSS for styling
             "</style>",
             "</head>",
             "<body>",
@@ -75,9 +80,17 @@ def write_pdf(html: str, prefix: str = "resume", chrome: str = "") -> None:
         "--print-to-pdf-no-header",
         "--no-pdf-header-footer",
         "--disable-gpu",
-        "--crash-dumps-dir=/tmp",
-        "--user-data-dir=/tmp",
+        "--disable-software-rasterizer",  # Disables GPU rasterization.
+        "--disable-extensions",  # Disables all Chrome extensions.
+        "--disable-setuid-sandbox",  # Avoids setuid sandbox issues.
+        "--disable-dev-shm-usage",  # Prevents shared memory errors.
+        "--no-first-run",  # Avoids initial setup on first run of Chrome.
+        "--disable-dbus",  # Disables D-Bus interactions.
+        "--disable-background-networking",  # Disables Chrome background networking.
+        "--disable-default-apps",  # Prevent default apps from loading.
+        "--disable-in-process-stack-traces",  # Reduces logging.
     ]
+    
     tmpdir = tempfile.mkdtemp(prefix="resume.md_")
     options.append(f"--crash-dumps-dir={tmpdir}")
     options.append(f"--user-data-dir={tmpdir}")
@@ -108,6 +121,11 @@ if __name__ == "__main__":
         nargs="?",
     )
     parser.add_argument(
+        "--css",
+        help="Path to the CSS file for styling",
+        default="resume.css",
+    )
+    parser.add_argument(
         "--no-pdf",
         help="Do not write pdf output",
         action="store_true",
@@ -131,7 +149,7 @@ if __name__ == "__main__":
 
     with open(args.file, encoding="utf-8") as mdfp:
         md = mdfp.read()
-    html = make_html(md)
+    html = make_html(md, css_file=args.css)
 
     if not args.no_pdf:
         write_pdf(html, prefix=prefix, chrome=args.chrome_path)
