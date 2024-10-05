@@ -1,96 +1,97 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
 
 body {
-    color: #000000;
-    background: #F5F5F5;
+    color: #333;
+    background: #FFFFFF;
     font-family: 'Noto Sans KR', 'Arial', sans-serif;  /* Korean font with fallback */
     font-size: 1.1em;
     line-height: 1.5;
-    margin: 40px 0;
+    margin: 0;
+    padding: 20px;
 }
 
 #resume {
     margin: 0 auto;
     max-width: 900px;
-    padding: 40px 60px;
+    padding: 20px;
     background: #FFFFFF;
     border: 1px solid #CCCCCC;
     box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
-    text-transform: uppercase;
-    text-align: center;
-    font-size: 2em;
+h1, h2, h3 {
     margin: 0;
     padding: 0;
     font-weight: 700;
-    letter-spacing: 0.05em;
+}
+
+h1 {
+    font-size: 2em;
+    text-align: center;
 }
 
 h2 {
-    border-bottom: 2px solid #000000;
-    text-transform: uppercase;
-    font-size: 1.4em;
-    margin: 1em 0 0.5em 0;
-    padding: 0;
-    font-weight: 700;
+    font-size: 1.5em;
+    color: #00BFFF;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #00BFFF;
 }
 
 h3 {
-    font-size: 1.2em;
-    margin: 0.8em 0 0.3em 0;
-    padding: 0;
-    display: flex;
-    justify-content: space-between;
-    font-weight: 700;
+    font-size: 1.3em;
+    color: #333;
+    margin-top: 20px;
 }
 
 p {
-    margin: 0 0 0.5em 0;
-    padding: 0;
+    margin: 5px 0;
     font-weight: 400;
 }
 
 ul {
-    padding: 0;
-    margin: 0 1.5em;
+    list-style-type: none;
+    padding-left: 0;
+    margin: 10px 0;
 }
 
 ul li {
-    margin-bottom: 0.5em;
+    margin-bottom: 1em;
 }
 
-h1 + ul {
-    text-align: center;
-    margin: 0;
-    padding: 0;
+li span.project-title {
+    font-weight: bold;
+    font-size: 1.1em;
 }
 
-h1 + ul > li {
-    display: inline;
-    white-space: pre;
-    list-style-type: none;
+li span.project-description {
+    color: #555;
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
-h1 + ul > li:after {
-    content: " | ";
+li span.project-date {
+    font-style: italic;
+    color: #888;
 }
 
-h1 + ul > li:last-child:after {
-    content: "";
+.project-category {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #00BFFF;
+    border-bottom: 2px solid #00BFFF;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
 }
 
-h1 + ul + p {
-    margin: 1em 0;
-}
-
-/* Adjustments for Korean text */
+/* Ensuring spacing and formatting for Korean text */
 p, li {
-    word-break: keep-all; /* Ensure proper word-breaking for Korean text */
-    letter-spacing: 0.02em; /* Slightly more space between letters for readability */
+    word-break: keep-all;
+    letter-spacing: 0.02em;
 }
 
+/* Print settings */
 @media print {
     body {
         font-size: 10pt;
@@ -101,37 +102,6 @@ p, li {
     #resume {
         margin: 0;
         padding: 0;
-        border: 0px;
-        background: none;
-        box-shadow: none;
-    }
-    /* Do not underline abbr tags in PDF */
-    abbr {
-        text-decoration: none;
-        font-variant: none;
-    }
-    /* Make links black in PDF */
-    a, a:link, a:visited, a:hover {
-        color: #000000;
-        text-decoration: underline;
-    }
-}
-
-@page {
-    size: A4;
-    margin: 1in;
-}
-
-@media screen and (max-width: 800px) {
-    body {
-        font-size: 16pt;
-        margin: 0;
-        padding: 0;
-        background: #FFFFFF !important;
-    }
-    #resume {
-        margin: 0;
-        padding: 1em;
         border: 0px;
         background: none;
         box-shadow: none;
