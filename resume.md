@@ -1,5 +1,5 @@
 <!-- The (first) h1 will be used as the <title> of the HTML page -->
-# Richard Hendricks
+# 한글 테스트 
 
 <!-- The unordered list immediately after the h1 will be formatted on a single
 line. It is intended to be used for contact details -->
@@ -20,7 +20,7 @@ adaptive variants.
 hand -->
 ### <span>CEO/President, Pied Piper</span> <span>Dec 2013 -- Dec 2014</span>
 
-Pied Piper is a multi-platform technology based on a proprietary universal
+변경 내용이 반영되는것인가.? Pied Piper is a multi-platform technology based on a proprietary universal
 compression algorithm that has consistently fielded high Weisman Scores™ that
 are not merely competitive, but approach the theoretical limit of lossless
 compression.
