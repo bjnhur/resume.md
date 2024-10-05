@@ -31,7 +31,7 @@ jobs:
           mv resume.pdf resume_windows.pdf
           mv resume.html resume_windows.html
     - name: Archive resume.html and resume.pdf
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
           path: |
               *.pdf
